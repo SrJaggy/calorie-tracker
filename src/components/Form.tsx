@@ -1,9 +1,14 @@
 import { categories } from "../data/categories";
-import { useState} from 'react';
-import type { ChangeEvent, FormEvent}  from 'react';
+import { useState } from 'react';
+import type { ChangeEvent, FormEvent, Dispatch}  from 'react';
 import type { Activity } from "../types";
+import type { ActivityActions } from "../reducers/activity-reducer";
 
-export const Form = () => {
+type FormProps = {
+  dispatch: Dispatch<ActivityActions>
+}
+
+export const Form = ({dispatch}: FormProps) => {
 
   const [activity, setActivity] = useState<Activity>({
     category: 1,
@@ -28,12 +33,15 @@ export const Form = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Enviando")
+    dispatch({type: "save-activity", payload: {newActivity: activity}});
   }
 
 
   return (
-    <form className="space-y-5 bg-white shadow p-10 rounded-lg">
+    <form 
+      className="space-y-5 bg-white shadow p-10 rounded-lg"
+      onSubmit = {handleSubmit}
+      >
       <div className="grid grid-cols-1 gap-3">
         <label htmlFor="category" className="font-bold">Categoría:</label>
         <select
@@ -41,7 +49,6 @@ export const Form = () => {
           id="category"
           value= {activity.category}
           onChange={handleChange}
-          onSubmit = {handleSubmit}
         >
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
