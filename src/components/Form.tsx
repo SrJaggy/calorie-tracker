@@ -1,4 +1,5 @@
 import { categories } from "../data/categories";
+import {v4 as uuidv4} from "uuid"
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent, Dispatch}  from 'react';
 import type { Activity } from "../types";
@@ -8,18 +9,21 @@ type FormProps = {
   dispatch: Dispatch<ActivityActions>
 }
 
-export const Form = ({dispatch}: FormProps) => {
-
-  const [activity, setActivity] = useState<Activity>({
+const initialState : Activity = {
+    id: uuidv4(),
     category: 1,
     name: '',
     calories: 0
-  });
+  }
+
+export const Form = ({dispatch}: FormProps) => {
+
+  const [activity, setActivity] = useState<Activity>(
+    initialState
+  );
 
   const handleChange = (e:ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
     const isNumberField = ["calories", "category"].includes(e.target.id);
-
-
     setActivity({
       ...activity,
       [e.target.id]: isNumberField ? +e.target.value : e.target.value
@@ -34,6 +38,12 @@ export const Form = ({dispatch}: FormProps) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch({type: "save-activity", payload: {newActivity: activity}});
+    setActivity({
+      ...initialState,
+      id: uuidv4()
+    })
+
+
   }
 
 

@@ -14,7 +14,7 @@ function App() {
           <h1 className="text-center text-lg font-bold text-white uppercase">
             {" "}
             Contador de calorias
-          </h1>
+          </h1> 
 
           <button>Reiniciar</button>
         </div>
