@@ -4,6 +4,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
+<<<<<<< HEAD
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
@@ -11,12 +12,21 @@ Currently, two official plugins are available:
 
 The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
 
+=======
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+>>>>>>> 2efece7c23f8d514e1f72e7781113311f2f48639
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
 ```js
+<<<<<<< HEAD
 export default defineConfig([
+=======
+export default tseslint.config([
+>>>>>>> 2efece7c23f8d514e1f72e7781113311f2f48639
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
@@ -24,11 +34,19 @@ export default defineConfig([
       // Other configs...
 
       // Remove tseslint.configs.recommended and replace with this
+<<<<<<< HEAD
       tseslint.configs.recommendedTypeChecked,
       // Alternatively, use this for stricter rules
       tseslint.configs.strictTypeChecked,
       // Optionally, add this for stylistic rules
       tseslint.configs.stylisticTypeChecked,
+=======
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
+>>>>>>> 2efece7c23f8d514e1f72e7781113311f2f48639
 
       // Other configs...
     ],
@@ -50,7 +68,11 @@ You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-re
 import reactX from 'eslint-plugin-react-x'
 import reactDom from 'eslint-plugin-react-dom'
 
+<<<<<<< HEAD
 export default defineConfig([
+=======
+export default tseslint.config([
+>>>>>>> 2efece7c23f8d514e1f72e7781113311f2f48639
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
